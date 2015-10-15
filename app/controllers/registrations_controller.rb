@@ -4,7 +4,7 @@ class RegistrationsController < Devise::RegistrationsController
   protected
 
   def config_permitted_parameters
-    devise_parameter)sanitizer.for(:sign_up)  << :name
+    devise_parameter_sanitizer.for(:sign_up) << :name, :email, :password, :current_password
   end
 
 end
