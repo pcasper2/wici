@@ -1,3 +1,17 @@
-<h1>Wicipedia</hi>
-<%= @wici.title %>
-<%= @wici.body %>
+<br>
+<div class="row">
+  <div class="col-md-12">
+    <div class="panel panel-primary">
+      <div class="panel panel-heading">
+        <center><h4><%= @wici.title %></h4></center>
+      </div>
+      <div class="panel panel-body">
+        <%= @wici.body %>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-8">
+    <%= link_to "Edit", edit_wici_path(@wici), class: "btn btn-primary" %>
+  </div>
+
+</div>

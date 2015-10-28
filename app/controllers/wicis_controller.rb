@@ -1,10 +1,12 @@
 class WicisController < ApplicationController
   before_action :find_wiki, only: [:show, :edit, :update, :destroy]
+
   def index
     @wicis = Wici.all
   end
 
   def show
+    #find_wiki
   end
 
   def new
@@ -12,6 +14,7 @@ class WicisController < ApplicationController
   end
 
   def edit
+    #find_wiki
   end
 
   def create
@@ -26,6 +29,7 @@ class WicisController < ApplicationController
   end
 
   def update
+    #find_wiki
     if @wici.update_attributes(wici_params)
       flash[:notice] = "Wici was saved"
       redirect_to @wici
@@ -36,9 +40,10 @@ class WicisController < ApplicationController
   end
 
   def destroy
+    #find_wiki
     if @wici.destroy
       flash[:notice] = "Wici was deleted"
-      redirect_to welcome_index_path
+      redirect_to wicis_path
     else
       flash[:error] = "There was a problem deleting your wici"
       render :show

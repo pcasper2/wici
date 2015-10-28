@@ -1,2 +1,16 @@
-<h1>wicis#edit</h1>
-<p>Find me in app/views/wicis/edit.html.erb</p>
+<br>
+<div class="row">
+  <div class="col-md-6">
+    <%= form_for [@wici] do |f| %>
+      <div class="form-group">
+        <%= f.label :title %>
+        <%= f.text_field :title, class: "form-control", placeholder: "#{@wici.title}" %>
+        <%= f.label :body %>
+        <%= f.text_area :body, rows: 8, class: "form-control", placeholder: "#{@wici.body}" %>
+        <br>
+        <%= f.submit "Save", class: "btn btn-success" %>
+        <%= link_to "Delete", [@wici], method: :delete, class: "btn btn-danger", data: {confirm: "Are you sure you want to delete this article?"} %>
+      </div>
+    <% end %>
+  </div>
+</div>

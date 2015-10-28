@@ -1,4 +1,17 @@
 <h1>Wicipedia</h1>
-<% @wicis.each do |wici| %>
- <p><%= link_to wici.title, wici %></p>
- <% end %>
+<div class="row">
+  <div class="col-md-8">
+    <% @wicis.each do |wici| %>]
+      <div class="media">
+        <div class="media-body">
+          <h4 class="media-heading">
+            <p><%= link_to wici.title, wici %></p>
+          </h4>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  </div class="col-md-4">
+    <%= link_to "New", new_wici_path, class: "btn btn-success" %>
+  </div>
+</div>
