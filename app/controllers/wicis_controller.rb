@@ -3,22 +3,27 @@ class WicisController < ApplicationController
 
   def index
     @wicis = Wici.all
+    authorize @wicis
   end
 
   def show
     #find_wiki
+    authorize @wici
   end
 
   def new
     @wici = Wici.new
+    authorize @wici
   end
 
   def edit
     #find_wiki
+    authorize @wici
   end
 
   def create
     @wici = current_user.wicis.build(wici_params)
+    authorize @wici
     if @wici.save
       flash[:notice] = "Wici was saved"
       redirect_to @wici
@@ -30,6 +35,7 @@ class WicisController < ApplicationController
 
   def update
     #find_wiki
+    authorize @wici
     if @wici.update_attributes(wici_params)
       flash[:notice] = "Wici was saved"
       redirect_to @wici
@@ -41,6 +47,7 @@ class WicisController < ApplicationController
 
   def destroy
     #find_wiki
+    authorize @wici
     if @wici.destroy
       flash[:notice] = "Wici was deleted"
       redirect_to wicis_path

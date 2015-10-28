@@ -5,4 +5,17 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
   has_many :wicis
+
+  def admin? 
+    role == 'admin'
+  end
+
+  def standard?
+    role == 'standard'
+  end
+
+  def premium?
+    role == 'premium'
+  end
+
 end

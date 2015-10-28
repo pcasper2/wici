@@ -10,8 +10,10 @@
       </div>
     </div>
   </div>
-  <div class="col-md-8">
-    <%= link_to "Edit", edit_wici_path(@wici), class: "btn btn-primary" %>
-  </div>
+  <% if policy(@wici).edit? %>
+    <div class="col-md-8">
+      <%= link_to "Edit", edit_wici_path(@wici), class: "btn btn-primary" %>
+    </div>
+  <% end %>
 
 </div>
