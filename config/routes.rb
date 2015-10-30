@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   resources :wicis
   devise_for :users
+  resources :charges, only: [:new, :create]
 
   get 'about' => 'welcome#about'
 
