@@ -3,10 +3,10 @@
   <div class="col-md-12">
     <div class="panel panel-primary">
       <div class="panel panel-heading">
-        <center><h4><%= @wici.title %></h4></center>
+        <center><h4><%= markdown_to_html @wici.title %></h4></center>
       </div>
       <div class="panel panel-body">
-        <%= @wici.body %>
+        <%= markdown_to_html @wici.body %>
       </div>
     </div>
   </div>
