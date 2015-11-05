@@ -7,7 +7,7 @@ class ApplicationPolicy
   end
 
   def index?
-    false
+    true
   end
 
   def show?
@@ -31,11 +31,12 @@ class ApplicationPolicy
   end
 
   def destroy?
-    user.admin?
+    record.user == user || user.admin?
   end
 
   def scope
-    Pundit.policy_scope!(user, record.class)
+    #Pundit.policy_scope!(user, record.class)
+    record.class
   end
 
   class Scope
@@ -47,7 +48,7 @@ class ApplicationPolicy
     end
 
     def resolve
-      scope
+      scope.all
     end
   end
 end

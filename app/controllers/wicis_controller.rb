@@ -1,8 +1,10 @@
 class WicisController < ApplicationController
   before_action :find_wiki, only: [:show, :edit, :update, :destroy]
 
+  
+
   def index
-    @wicis = Wici.all
+    @wicis = policy_scope(Wici)
     authorize @wicis
   end
 

@@ -6,12 +6,12 @@ class User < ActiveRecord::Base
 
   has_many :wicis
 
-  #after_initialize :set_default_role, :if => :new_record?
-  before_create :set_default_role
+  # => after_initialize :set_default_role, :if => :new_record?
+  #before_create :set_default_role
 
-  def set_default_role
-    self.role ||= "standard"
-  end
+  #def set_default_role
+  #  self.role ||= "standard"
+  #end
 
   def admin? 
     role == 'admin'
@@ -23,6 +23,14 @@ class User < ActiveRecord::Base
 
   def premium?
     role == 'premium'
+  end
+
+  def make_wicis_public
+    wicis.each do |wici|
+      if wici.private?
+        wici.update_attributes(private: false)
+      end
+    end
   end
 
 end

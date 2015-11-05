@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
 
   resources :wicis
-  devise_for :users
+  devise_for :users#, :controllers => {:registrations => 'registrations'}
   resources :charges, only: [:new, :create]
+
+  delete 'downgrade' => 'charges#downgrade'
 
   get 'about' => 'welcome#about'
 

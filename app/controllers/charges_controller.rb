@@ -42,7 +42,12 @@ class ChargesController < ApplicationController
   end
 
   def downgrade
-    current_user.role
+    current_user.make_wicis_public
+    customer = Stripe::Customer.retrieve(current_user.customer_id)
+    customer.delete
+    current_user.update_attributes(role: 'standard')
+    current_user.update_attributes(customer_id: nil)
+    redirect_to edit_user_registration_path
   end
 end
 
