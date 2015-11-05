@@ -8,12 +8,19 @@
         <%= f.label :body %>
         <%= f.text_area :body, rows: 8, class: "form-control", placeholder: "#{@wici.body}" %>
         <br>
+                <% if policy(@wici).make_private? %>
+          <div class="form-group">
+            <%= f.label :private, class: 'checkbox' do %>
+              <%= f.check_box :private %> Private Wici
+            <% end %>
+          </div>
+        <% end %>
         <%= f.submit "Save", class: "btn btn-success" %>
         <% if policy(@wici).destroy? %>
           <%= link_to "Delete", [@wici], method: :delete, class: "btn btn-danger", data: {confirm: "Are you sure you want to delete this article?"} %>
         <% end %>
+
       </div>
-      <
     <% end %>
   </div>
 </div>
